@@ -90,6 +90,8 @@ Add the following configuration to Cursor's MCP configuration file:
 - `MCP_DIALOG_TIMEOUT`: Dialog timeout in seconds, default 600 seconds
 - `LANGUAGE`: Interface language, `CN` (Chinese) or `EN` (English)
 
+![MCP Server Configuration](pic/MCP_server_configuration.png)
+
 ### Getting Paths
 
 ```bash
@@ -124,6 +126,8 @@ If the ongoing task involves UI modifications, you should only complete the user
 3. Add new rule and paste the above content
 4. Set Rule Type to `Always`
 5. Save configuration
+
+![Rules Configuration](pic/Rules_configuration.png)
 
 ## MCP Tools
 
@@ -160,4 +164,4 @@ feedback_collector/
     └── utils/               # Utility functions
         ├── gui_utils.py     # GUI utility functions
         └── i18n.py          # Internationalization support
-``` 
+```

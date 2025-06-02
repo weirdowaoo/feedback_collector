@@ -90,6 +90,8 @@ pip install -r requirements.txt
 - `MCP_DIALOG_TIMEOUT`: 对话框超时时间（秒），默认 600 秒
 - `LANGUAGE`: 界面语言，`CN`（中文）或 `EN`（英文）
 
+![MCP 服务器配置](pic/MCP_server_configuration.png)
+
 ### 获取路径
 
 ```bash
@@ -124,6 +126,8 @@ If the ongoing task involves UI modifications, you should only complete the user
 3. 添加新规则，将上述内容粘贴进去
 4. 将 Rule Type 设置为 `Always`
 5. 保存配置
+
+![规则配置](pic/Rules_configuration.png)
 
 ## MCP 工具
 
@@ -160,4 +164,4 @@ feedback_collector/
     └── utils/               # 工具函数
         ├── gui_utils.py     # GUI 工具函数
         └── i18n.py          # 国际化支持
-``` 
+```
