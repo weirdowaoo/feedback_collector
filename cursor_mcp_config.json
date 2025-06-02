@@ -1,0 +1,14 @@
+{
+    "mcpServers": {
+        "feedback-collector": {
+            "command": "/Users/weirdowaoo/anaconda3/envs/feedback_collector/bin/python",
+            "args": [
+                "/Users/weirdowaoo/Documents/CursorProjects/feedback_collector/src/server.py"
+            ],
+            "env": {
+                "MCP_DIALOG_TIMEOUT": "600",
+                "LANGUAGE": "CN"
+            }
+        }
+    }
+}
