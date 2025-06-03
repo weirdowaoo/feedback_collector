@@ -1,0 +1,16 @@
+{
+    "mcpServers": {
+        "feedback-collector": {
+            "command": "cmd",
+            "args": [
+                "/c",
+                "D:/apps/miniforge3/envs/feedback_collector/python.exe",
+                "D:/CursorProjects/feedback_collector/src/server.py"
+            ],
+            "env": {
+                "MCP_DIALOG_TIMEOUT": "600",
+                "LANGUAGE": "CN"
+            }
+        }
+    }
+}

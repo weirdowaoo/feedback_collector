@@ -68,13 +68,16 @@ pip install -r requirements.txt
 
 在 Cursor 的 MCP 配置文件中添加以下配置：
 
+### macOS/Linux 配置
+
 ```json
 {
   "mcpServers": {
     "feedback-collector": {
       "command": "/path/to/your/python",
-      "args": ["-m", "src.server"],
-      "cwd": "/path/to/feedback_collector",
+      "args": [
+        "/path/to/feedback_collector/src/server.py"
+      ],
       "env": {
         "MCP_DIALOG_TIMEOUT": "600",
         "LANGUAGE": "CN"
@@ -84,9 +87,55 @@ pip install -r requirements.txt
 }
 ```
 
+**配置文件示例**: [mcp_config_example_for_mac_and_linux.json](mcp_config_example_for_mac_and_linux.json)
+
+### Windows 配置
+
+**方法一：直接执行 Python**
+```json
+{
+  "mcpServers": {
+    "feedback-collector": {
+      "command": "/path/to/your/conda/envs/feedback_collector/python.exe",
+      "args": [
+        "/path/to/feedback_collector/src/server.py"
+      ],
+      "env": {
+        "MCP_DIALOG_TIMEOUT": "600",
+        "LANGUAGE": "CN"
+      }
+    }
+  }
+}
+```
+
+**配置文件示例**: [mcp_config_example_for_windows_1.json](mcp_config_example_for_windows_1.json)
+
+**方法二：使用 cmd 包装器**
+```json
+{
+  "mcpServers": {
+    "feedback-collector": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "/path/to/your/conda/envs/feedback_collector/python.exe",
+        "/path/to/feedback_collector/src/server.py"
+      ],
+      "env": {
+        "MCP_DIALOG_TIMEOUT": "600",
+        "LANGUAGE": "CN"
+      }
+    }
+  }
+}
+```
+
+**配置文件示例**: [mcp_config_example_for_windows_2.json](mcp_config_example_for_windows_2.json)
+
 **配置说明**：
-- `command`: Python 解释器路径
-- `cwd`: 项目根目录的绝对路径
+- `command`: Python 解释器路径或系统命令
+- `args`: 传递给命令的参数
 - `MCP_DIALOG_TIMEOUT`: 对话框超时时间（秒），默认 600 秒
 - `LANGUAGE`: 界面语言，`CN`（中文）或 `EN`（英文）
 
@@ -94,6 +143,7 @@ pip install -r requirements.txt
 
 ### 获取路径
 
+**macOS/Linux:**
 ```bash
 # 获取 Python 路径
 conda activate feedback_collector
@@ -102,6 +152,13 @@ which python
 # 获取项目路径
 cd /path/to/feedback_collector
 pwd
+```
+
+**Windows:**
+```cmd
+# 获取 Python 路径
+conda activate feedback_collector
+python -c "import sys; print(sys.executable)"
 ```
 
 ## Project Rules 配置
@@ -144,6 +201,7 @@ If the ongoing task involves UI modifications, you should only complete the user
 3. 在弹出的对话框中输入文字反馈或添加图片
 4. 使用快捷键 `⌘+Enter` （ Mac ）或 `Ctrl+Enter` （ Windows/Linux ）提交反馈；按 `ESC` 键取消操作
 5. AI 会基于反馈继续进行后续操作（以达到充分利用单次请求最多 25 次工具调用的目的）
+> **重要提醒**：开启 `Cursor Settings -> Features -> Chat -> Enable auto-run mode` 以获取最丝滑的使用体验，但需注意一定要配置好命令的黑白名单以保证安全
 
 ## 项目结构
 

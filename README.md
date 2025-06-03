@@ -68,13 +68,16 @@ pip install -r requirements.txt
 
 Add the following configuration to Cursor's MCP configuration file:
 
+### macOS/Linux Configuration
+
 ```json
 {
   "mcpServers": {
     "feedback-collector": {
       "command": "/path/to/your/python",
-      "args": ["-m", "src.server"],
-      "cwd": "/path/to/feedback_collector",
+      "args": [
+        "/path/to/feedback_collector/src/server.py"
+      ],
       "env": {
         "MCP_DIALOG_TIMEOUT": "600",
         "LANGUAGE": "EN"
@@ -84,9 +87,55 @@ Add the following configuration to Cursor's MCP configuration file:
 }
 ```
 
+**Example configuration file**: [mcp_config_example_for_mac_and_linux.json](mcp_config_example_for_mac_and_linux.json)
+
+### Windows Configuration
+
+**Method 1: Direct Python execution**
+```json
+{
+  "mcpServers": {
+    "feedback-collector": {
+      "command": "/path/to/your/conda/envs/feedback_collector/python.exe",
+      "args": [
+        "/path/to/feedback_collector/src/server.py"
+      ],
+      "env": {
+        "MCP_DIALOG_TIMEOUT": "600",
+        "LANGUAGE": "EN"
+      }
+    }
+  }
+}
+```
+
+**Example configuration file**: [mcp_config_example_for_windows_1.json](mcp_config_example_for_windows_1.json)
+
+**Method 2: Using cmd wrapper**
+```json
+{
+  "mcpServers": {
+    "feedback-collector": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "/path/to/your/conda/envs/feedback_collector/python.exe",
+        "/path/to/feedback_collector/src/server.py"
+      ],
+      "env": {
+        "MCP_DIALOG_TIMEOUT": "600",
+        "LANGUAGE": "EN"
+      }
+    }
+  }
+}
+```
+
+**Example configuration file**: [mcp_config_example_for_windows_2.json](mcp_config_example_for_windows_2.json)
+
 **Configuration Description**:
-- `command`: Python interpreter path
-- `cwd`: Absolute path to project root directory
+- `command`: Python interpreter path or system command
+- `args`: Arguments passed to the command
 - `MCP_DIALOG_TIMEOUT`: Dialog timeout in seconds, default 600 seconds
 - `LANGUAGE`: Interface language, `CN` (Chinese) or `EN` (English)
 
@@ -94,6 +143,7 @@ Add the following configuration to Cursor's MCP configuration file:
 
 ### Getting Paths
 
+**macOS/Linux:**
 ```bash
 # Get Python path
 conda activate feedback_collector
@@ -102,6 +152,13 @@ which python
 # Get project path
 cd /path/to/feedback_collector
 pwd
+```
+
+**Windows:**
+```cmd
+# Get Python path
+conda activate feedback_collector
+python -c "import sys; print(sys.executable)"
 ```
 
 ## Project Rules Configuration
@@ -144,6 +201,7 @@ Main tool for collecting user feedback:
 3. Enter text feedback or add images in the popup dialog
 4. Use shortcut `⌘+Enter` (Mac) or `Ctrl+Enter` (Windows/Linux) to submit feedback; press `ESC` to cancel
 5. AI will continue subsequent operations based on feedback (to achieve full utilization of up to 25 tool calls per single request)
+> **Important**: Enable `Cursor Settings -> Features -> Chat -> Enable auto-run mode` for the smoothest user experience, but make sure to configure command allowlist/denylist properly for security
 
 ## Project Structure
 
