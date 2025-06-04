@@ -40,6 +40,9 @@ except ImportError:
 class ModernFeedbackDialog:
     """反馈收集对话框"""
 
+    # 类级别变量，记住用户的自动附加偏好设置
+    _user_auto_append_preference = True  # 默认为True
+
     def __init__(self, timeout_seconds: int = 600):
         self.timeout_seconds = timeout_seconds
         self.feedback_collector = FeedbackCollector(timeout_seconds)
@@ -49,6 +52,7 @@ class ModernFeedbackDialog:
         self.window: Optional[tk.Tk] = None
         self.text_area: Optional[MacOSTextArea] = None
         self.image_gallery: Optional[ImageGallery] = None
+        self.auto_append_var: Optional[tk.BooleanVar] = None  # 自动附加复选框变量
 
         # 状态
         self.result = None
@@ -113,7 +117,7 @@ class ModernFeedbackDialog:
 
         # 设置窗口属性
         self.window.resizable(True, True)
-        self.window.minsize(500, 550)
+        self.window.minsize(500, 650)  # 增加最小高度从550到650
 
         # 设置主题
         theme = DarkThemeManager
@@ -153,7 +157,7 @@ class ModernFeedbackDialog:
 
         # 设置窗口大小和居中位置
         window_width = 550
-        window_height = 580
+        window_height = 680  # 增加默认高度从580到680
         screen_width = self.window.winfo_screenwidth()
         screen_height = self.window.winfo_screenheight()
         x = (screen_width // 2) - (window_width // 2)
@@ -199,6 +203,11 @@ class ModernFeedbackDialog:
         if self.image_gallery:
             self.image_gallery.clear_images()
 
+        # 保持用户的自动附加偏好设置，而不是重置为默认值
+        if self.auto_append_var:
+            self.auto_append_var.set(
+                ModernFeedbackDialog._user_auto_append_preference)
+
     def _create_ui(self, parent: tk.Widget):
         """创建用户界面"""
         # 创建主内容区域
@@ -211,6 +220,9 @@ class ModernFeedbackDialog:
 
         # 图片反馈区域
         self._create_image_feedback_section(content_frame)
+
+        # 自动附加复选框区域
+        self._create_auto_append_section(content_frame)
 
         # 操作按钮区域（固定在底部）
         self._create_action_buttons(parent)
@@ -280,6 +292,35 @@ class ModernFeedbackDialog:
 
         # 设置图片移除回调
         self.image_gallery.on_image_remove = self._on_image_removed
+
+    def _create_auto_append_section(self, parent: tk.Widget):
+        """创建自动附加复选框区域"""
+        # 自动附加复选框卡片
+        auto_append_card = MacOSCard(parent, get_text('auto_append_title'))
+        auto_append_card.pack(fill=tk.X, pady=(
+            0, self.theme.get_size('spacing_v')))
+
+        # 自动附加复选框
+        self.auto_append_var = tk.BooleanVar()
+        # 使用用户的偏好设置，而不是硬编码为True
+        self.auto_append_var.set(
+            ModernFeedbackDialog._user_auto_append_preference)
+
+        auto_append_checkbox = tk.Checkbutton(
+            auto_append_card.content_frame,
+            text=get_text('auto_append_checkbox'),
+            variable=self.auto_append_var,
+            bg=self.theme.get_color('bg_secondary'),
+            fg=self.theme.get_color('text_primary'),
+            selectcolor=self.theme.get_color('bg_primary'),
+            activebackground=self.theme.get_color('bg_secondary'),
+            activeforeground=self.theme.get_color('text_primary'),
+            relief=tk.FLAT,
+            font=self.theme.get_font('body'),
+            # 添加回调函数来保存用户的选择
+            command=self._on_auto_append_changed
+        )
+        auto_append_checkbox.pack(anchor='w', padx=0, pady=0)
 
     def _create_action_buttons(self, parent: tk.Widget):
         """创建操作按钮"""
@@ -366,6 +407,14 @@ class ModernFeedbackDialog:
             # 获取文字反馈
             text_feedback = self.text_area.get_text().strip()
 
+            # 如果勾选了自动附加复选框，则在文字反馈后追加内容
+            if self.auto_append_var and self.auto_append_var.get():
+                append_text = get_text('auto_append_content')
+                if text_feedback:
+                    text_feedback = f"{text_feedback}\n\n\n{append_text}"
+                else:
+                    text_feedback = append_text
+
             # 获取图片反馈
             images = self.image_gallery.get_images()
 
@@ -423,6 +472,12 @@ class ModernFeedbackDialog:
         }
         # 隐藏对话框
         self._hide_window()
+
+    def _on_auto_append_changed(self):
+        """当自动附加复选框状态改变时的回调"""
+        if self.auto_append_var:
+            # 保存用户的偏好设置到类级别变量
+            ModernFeedbackDialog._user_auto_append_preference = self.auto_append_var.get()
 
     def destroy(self):
         """销毁对话框（仅在程序结束时调用）"""

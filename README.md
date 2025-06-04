@@ -28,7 +28,7 @@ The core purpose of this MCP tool is:
 
 |  | <div align="center">Before</div> | <div align="center">After</div> |
 |--|--------|--------|
-| **Workflow** | <div align="center">Input in Agent mode: Complete &lt;Task 1&gt;</div><div align="center">⬇</div><div align="center">Task completed, this fast request ends</div> | <div align="center">Input in Agent mode: Complete &lt;Task 1&gt;</div><div align="center">⬇</div><div align="center">Task completed, call feedback collector for feedback</div><div align="center">⬇</div><div align="center">Input in MCP tool: Complete &lt;Task 2&gt;</div><div align="center">⬇</div><div align="center">Task completed, call feedback collector for feedback</div><div align="center">⬇</div><div align="center">Input in MCP tool: Complete &lt;Task 3&gt;</div><div align="center">⬇</div><div align="center">Task completed, call feedback collector for feedback</div><div align="center">⬇</div><div align="center">Input in MCP tool: Complete &lt;Task 4&gt;</div><div align="center">⬇</div><div align="center">Task completed, call feedback collector for feedback</div><div align="center">⬇</div><div align="center">Input in MCP tool: Complete &lt;Task 5&gt;</div><div align="center">⬇</div><div align="center">Task completed, call feedback collector for feedback</div><div align="center">⬇</div><div align="center">Input in MCP tool: Complete &lt;Task 6&gt;</div><div align="center">⬇</div><div align="center">...until reaching 25 tool call limit</div> |
+| **Workflow** | <div align="center">Input in Agent mode: Complete &lt;Task 1&gt;</div><div align="center">⬇</div><div align="center">Task completed, this fast request ends</div> | <div align="center">Input in Agent mode: Complete &lt;Task 1&gt;</div><div align="center">⬇</div><div align="center">Task completed, call feedback collector for feedback</div><div align="center">⬇</div><div align="center">Input in MCP tool: Complete &lt;Task 2&gt;</div><div align="center">⬇</div><div align="center">Task completed, call feedback collector for feedback</div><div align="center">⬇</div><div align="center">Input in MCP tool: Complete &lt;Task 3&gt;</div><div align="center">⬇</div><div align="center">Task completed, call feedback collector for feedback</div><div align="center">⬇</div><div align="center">......</div><div align="center">⬇</div><div align="center">until reaching 25 tool call limit</div> |
 | **Request Consumption** | <div align="center">Consumes 1 Request</div> | <div align="center">Consumes 1 Request</div> |
 
 ## Features
@@ -87,7 +87,7 @@ Add the following configuration to Cursor's MCP configuration file:
 }
 ```
 
-**Example configuration file**: [mcp_config_example_for_mac_and_linux.json](mcp_config_example_for_mac_and_linux.json)
+**Example configuration file**: [mcp_config_example_for_mac_and_linux.json](config_example/mcp_config_example_for_mac_and_linux.json)
 
 ### Windows Configuration
 
@@ -109,7 +109,7 @@ Add the following configuration to Cursor's MCP configuration file:
 }
 ```
 
-**Example configuration file**: [mcp_config_example_for_windows_1.json](mcp_config_example_for_windows_1.json)
+**Example configuration file**: [mcp_config_example_for_windows_1.json](config_example/mcp_config_example_for_windows_1.json)
 
 **Method 2: Using cmd wrapper**
 ```json
@@ -131,7 +131,7 @@ Add the following configuration to Cursor's MCP configuration file:
 }
 ```
 
-**Example configuration file**: [mcp_config_example_for_windows_2.json](mcp_config_example_for_windows_2.json)
+**Example configuration file**: [mcp_config_example_for_windows_2.json](config_example/mcp_config_example_for_windows_2.json)
 
 **Configuration Description**:
 - `command`: Python interpreter path or system command

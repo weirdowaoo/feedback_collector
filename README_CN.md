@@ -28,7 +28,7 @@
 
 |  | <div align="center">使用前</div> | <div align="center">使用后</div> |
 |--|--------|--------|
-| **工作流程** | <div align="center">在 Agent 模式下输入：完成 &lt;任务 1&gt;</div><div align="center">⬇</div><div align="center">任务完成，本次快速请求结束</div> | <div align="center">在 Agent 模式下输入：完成 &lt;任务 1&gt;</div><div align="center">⬇</div><div align="center">任务完成，调用反馈收集器获取反馈</div><div align="center">⬇</div><div align="center">在 MCP 工具中输入：完成 &lt;任务 2&gt;</div><div align="center">⬇</div><div align="center">任务完成，调用反馈收集器获取反馈</div><div align="center">⬇</div><div align="center">在 MCP 工具中输入：完成 &lt;任务 3&gt;</div><div align="center">⬇</div><div align="center">任务完成，调用反馈收集器获取反馈</div><div align="center">⬇</div><div align="center">在 MCP 工具中输入：完成 &lt;任务 4&gt;</div><div align="center">⬇</div><div align="center">任务完成，调用反馈收集器获取反馈</div><div align="center">⬇</div><div align="center">在 MCP 工具中输入：完成 &lt;任务 5&gt;</div><div align="center">⬇</div><div align="center">任务完成，调用反馈收集器获取反馈</div><div align="center">⬇</div><div align="center">在 MCP 工具中输入：完成 &lt;任务 6&gt;</div><div align="center">⬇</div><div align="center">...直到达到 25 次工具调用限额</div> |
+| **工作流程** | <div align="center">在 Agent 模式下输入：完成 &lt;任务 1&gt;</div><div align="center">⬇</div><div align="center">任务完成，本次快速请求结束</div> | <div align="center">在 Agent 模式下输入：完成 &lt;任务 1&gt;</div><div align="center">⬇</div><div align="center">任务完成，调用反馈收集器获取反馈</div><div align="center">⬇</div><div align="center">在 MCP 工具中输入：完成 &lt;任务 2&gt;</div><div align="center">⬇</div><div align="center">任务完成，调用反馈收集器获取反馈</div><div align="center">⬇</div><div align="center">在 MCP 工具中输入：完成 &lt;任务 3&gt;</div><div align="center">⬇</div><div align="center">任务完成，调用反馈收集器获取反馈</div><div align="center">⬇</div><div align="center">......</div><div align="center">⬇</div><div align="center">直到达到 25 次工具调用限额</div> |
 | **消耗 Request 统计** | <div align="center">消耗 1 次 Request</div> | <div align="center">消耗 1 次 Request</div> |
 
 ## 特性
@@ -87,7 +87,7 @@ pip install -r requirements.txt
 }
 ```
 
-**配置文件示例**: [mcp_config_example_for_mac_and_linux.json](mcp_config_example_for_mac_and_linux.json)
+**配置文件示例**: [mcp_config_example_for_mac_and_linux.json](config_example/mcp_config_example_for_mac_and_linux.json)
 
 ### Windows 配置
 
@@ -109,7 +109,7 @@ pip install -r requirements.txt
 }
 ```
 
-**配置文件示例**: [mcp_config_example_for_windows_1.json](mcp_config_example_for_windows_1.json)
+**配置文件示例**: [mcp_config_example_for_windows_1.json](config_example/mcp_config_example_for_windows_1.json)
 
 **方法二：使用 cmd 包装器**
 ```json
@@ -131,7 +131,7 @@ pip install -r requirements.txt
 }
 ```
 
-**配置文件示例**: [mcp_config_example_for_windows_2.json](mcp_config_example_for_windows_2.json)
+**配置文件示例**: [mcp_config_example_for_windows_2.json](config_example/mcp_config_example_for_windows_2.json)
 
 **配置说明**：
 - `command`: Python 解释器路径或系统命令

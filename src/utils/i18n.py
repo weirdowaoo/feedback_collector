@@ -23,6 +23,7 @@ TRANSLATIONS = {
         # 卡片标题
         'text_feedback_title': '📝 文字反馈',
         'image_feedback_title': '🖼️ 图片反馈',
+        'auto_append_title': '⚙️ 自动附加设置',
 
         # 按钮文本
         'submit_button': '提交反馈',
@@ -32,6 +33,10 @@ TRANSLATIONS = {
         'clear_images_button': '清除图片',
         'select_file_button': '选择文件',
         'paste_clipboard_button': '粘贴剪贴板',
+
+        # 复选框文本
+        'auto_append_checkbox': '自动附加调用反馈收集器 prompt',
+        'auto_append_content': '以下是你需要非常注意的 2 点：\n1. 对以上用户反馈进行处理（或回答）。\n2. 在处理完（或回答完）以上用户反馈后，必须重新调用 <feedback-collector.collect_feedback> MCP 以获取用户反馈',
 
         # 占位符文本
         'text_placeholder': '请在此输入您的反馈、建议或问题...',
@@ -98,6 +103,7 @@ TRANSLATIONS = {
         # Card titles
         'text_feedback_title': '📝 Text Feedback',
         'image_feedback_title': '🖼️ Image Feedback',
+        'auto_append_title': '⚙️ Automatic Append Settings',
 
         # Button text
         'submit_button': 'Submit Feedback',
@@ -107,6 +113,10 @@ TRANSLATIONS = {
         'clear_images_button': 'Clear Images',
         'select_file_button': 'Select File',
         'paste_clipboard_button': 'Paste Clipboard',
+
+        # Checkbox text
+        'auto_append_checkbox': 'Automatically Append Feedback Collector Prompt',
+        'auto_append_content': 'The following are the 2 points you must pay attention to:\n1. Process (or answer) the above user feedback.\n2. After processing (or answering) the above user feedback, you must re-call <feedback-collector.collect_feedback> MCP to get user feedback',
 
         # Placeholder text
         'text_placeholder': 'Please enter your feedback, suggestions or questions here...',
