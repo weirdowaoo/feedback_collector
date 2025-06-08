@@ -4,6 +4,26 @@
 
 A feedback collection tool that supports text and image feedback with a dark theme design.
 
+## 🌐 Web Version Available
+
+The **[MCP Feedback Collector (Web Version)](https://github.com/weirdowaoo/feedback_collector_web)** is specifically designed for development scenarios where you connect to remote servers via SSH. The Web version solves the limitations of traditional local GUI feedback collection methods in remote development environments.
+
+🔄 **Project Relationship**
+- **This Project**: Traditional local GUI feedback collection tool
+- **Web Version**: Designed specifically for remote development environments
+- **Choose the right tool based on your needs**:
+  - If you develop locally and prefer native GUI, use this project
+  - If you develop on remote servers via SSH or prefer web interfaces, use the web version
+
+🎯 **Problems Solved**
+- **Remote Development Limitations**: SSH connections cannot use local GUI interfaces
+- **Server Environment Compatibility**: Perfect for headless server environments
+- **Web-based Interface**: Access feedback collection through any web browser
+
+👉 **[Visit Web Version →](https://github.com/weirdowaoo/feedback_collector_web)**
+
+## Interface Preview
+
 <table>
   <tr>
     <td align="center"><b>Chinese Interface</b></td>
